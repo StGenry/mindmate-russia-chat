@@ -13,11 +13,291 @@ import {
   Phone,
   Mail,
   Instagram,
-  Twitter
+  Twitter,
+  Globe
 } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
+import { useState } from "react";
+
+type Language = 'en' | 'pt' | 'ru';
+
+const translations = {
+  en: {
+    nav: {
+      features: "Features",
+      howItWorks: "How it Works", 
+      pricing: "Pricing",
+      faq: "FAQ",
+      startTrial: "Start Trial"
+    },
+    hero: {
+      badge: "Join over 5,000 users who trust MindMate daily",
+      title: "Your AI Psychology Coach",
+      subtitle: "24/7 anonymous chat coaching for €4.99/month. Instant responses and support anytime.",
+      cta: "Start 7-day free trial",
+      disclaimer: "Free for 7 days, then €4.99/month. Cancel anytime.",
+      friendMessage: "Like a knowledgeable friend who remembers everything, keeps secrets better than any diary, and has access to humanity's collective psychology knowledge."
+    },
+    problemSolution: {
+      problemTitle: "When Traditional Therapy Is Inconvenient",
+      problemPoints: [
+        "Expensive & hard to find your own therapist",
+        "No support at night or on weekends", 
+        "Long waiting lists & inflexible schedules"
+      ],
+      solutionTitle: "Our Solution",
+      solutionPoints: [
+        "Instant responses anytime, day or night",
+        "8x cheaper than traditional therapy",
+        "Complete anonymity and confidentiality"
+      ]
+    },
+    features: {
+      title: "Platform Features",
+      subtitle: "Everything you need for emotional support and mental wellness",
+      response: "Response < 3s",
+      responseDesc: "Instant replies to your messages anytime",
+      unlimited: "Unlimited Chat",
+      unlimitedDesc: "Write as much as you want, no time limits",
+      memory: "Contextual Memory", 
+      memoryDesc: "AI remembers your history and adapts to you",
+      crisis: "Crisis Detection",
+      crisisDesc: "Automatic detection of crisis situations"
+    },
+    socialProof: {
+      title: "User Reviews"
+    },
+    pricing: {
+      title: "Simple and Honest Pricing",
+      subtitle: "Start free, continue with subscription",
+      basic: "Basic Plan",
+      basicPrice: "€4.99",
+      premium: "Premium Plan", 
+      premiumPrice: "€5.99",
+      popular: "Popular",
+      month: "per month",
+      basicFeatures: [
+        "Unlimited text chat",
+        "Contextual memory", 
+        "Mood tracking",
+        "Crisis support"
+      ],
+      premiumFeatures: [
+        "Everything in Basic",
+        "Voice messages",
+        "Priority support", 
+        "Export history"
+      ],
+      startBasic: "7 days free",
+      startPremium: "Start with Premium"
+    },
+    howItWorks: {
+      title: "How It Works",
+      step1: "Sign Up",
+      step1Desc: "Quick registration via Telegram or email in 30 seconds",
+      step2: "Start Chatting", 
+      step2Desc: "Describe what's bothering you and get support immediately",
+      step3: "Continue Growing",
+      step3Desc: "Track your progress and build better mental health habits"
+    },
+    faq: {
+      title: "Frequently Asked Questions"
+    },
+    footer: {
+      description: "AI-powered psychological support available 24/7. Your trusted companion for mental wellness.",
+      contact: "Contact",
+      legal: "Legal",
+      privacy: "Privacy Policy",
+      terms: "Terms of Service",
+      compliance: "Compliance"
+    }
+  },
+  pt: {
+    nav: {
+      features: "Recursos",
+      howItWorks: "Como Funciona",
+      pricing: "Preços", 
+      faq: "FAQ",
+      startTrial: "Iniciar Teste"
+    },
+    hero: {
+      badge: "Junte-se a mais de 5.000 usuários que confiam no MindMate diariamente",
+      title: "Seu Coach de Psicologia AI",
+      subtitle: "Coaching de chat anônimo 24/7 por €4,99/mês. Respostas instantâneas e suporte a qualquer momento.",
+      cta: "Iniciar teste gratuito de 7 dias",
+      disclaimer: "Grátis por 7 dias, depois €4,99/mês. Cancele a qualquer momento.",
+      friendMessage: "Como um amigo conhecedor que lembra de tudo, guarda segredos melhor que qualquer diário, e tem acesso ao conhecimento coletivo de psicologia da humanidade."
+    },
+    problemSolution: {
+      problemTitle: "Quando a Terapia Tradicional É Inconveniente",
+      problemPoints: [
+        "Caro e difícil de encontrar seu próprio terapeuta",
+        "Sem apoio à noite ou nos fins de semana",
+        "Longas listas de espera e horários inflexíveis"
+      ],
+      solutionTitle: "Nossa Solução", 
+      solutionPoints: [
+        "Respostas instantâneas a qualquer hora",
+        "8x mais barato que terapia tradicional",
+        "Completo anonimato e confidencialidade"
+      ]
+    },
+    features: {
+      title: "Recursos da Plataforma",
+      subtitle: "Tudo que você precisa para apoio emocional e bem-estar mental",
+      response: "Resposta < 3s",
+      responseDesc: "Respostas instantâneas às suas mensagens a qualquer hora",
+      unlimited: "Chat Ilimitado",
+      unlimitedDesc: "Escreva o quanto quiser, sem limites de tempo",
+      memory: "Memória Contextual",
+      memoryDesc: "IA lembra seu histórico e se adapta a você", 
+      crisis: "Detecção de Crise",
+      crisisDesc: "Detecção automática de situações de crise"
+    },
+    socialProof: {
+      title: "Avaliações dos Usuários"
+    },
+    pricing: {
+      title: "Preços Simples e Honestos",
+      subtitle: "Comece grátis, continue com assinatura",
+      basic: "Plano Básico",
+      basicPrice: "€4,99",
+      premium: "Plano Premium",
+      premiumPrice: "€5,99", 
+      popular: "Popular",
+      month: "por mês",
+      basicFeatures: [
+        "Chat de texto ilimitado",
+        "Memória contextual",
+        "Acompanhamento de humor",
+        "Suporte em crise"
+      ],
+      premiumFeatures: [
+        "Tudo do Básico",
+        "Mensagens de voz",
+        "Suporte prioritário",
+        "Exportar histórico"
+      ],
+      startBasic: "7 dias grátis",
+      startPremium: "Começar com Premium"
+    },
+    howItWorks: {
+      title: "Como Funciona",
+      step1: "Cadastre-se",
+      step1Desc: "Registro rápido via Telegram ou email em 30 segundos",
+      step2: "Comece a Conversar",
+      step2Desc: "Descreva o que está te incomodando e receba apoio imediatamente", 
+      step3: "Continue Crescendo",
+      step3Desc: "Acompanhe seu progresso e construa melhores hábitos de saúde mental"
+    },
+    faq: {
+      title: "Perguntas Frequentes"
+    },
+    footer: {
+      description: "Suporte psicológico alimentado por IA disponível 24/7. Seu companheiro confiável para bem-estar mental.",
+      contact: "Contato",
+      legal: "Legal", 
+      privacy: "Política de Privacidade",
+      terms: "Termos de Serviço",
+      compliance: "Conformidade"
+    }
+  },
+  ru: {
+    nav: {
+      features: "Возможности",
+      howItWorks: "Как это работает",
+      pricing: "Цены",
+      faq: "FAQ", 
+      startTrial: "Начать триал"
+    },
+    hero: {
+      badge: "Присоединяйтесь к более чем 5 000 пользователей, которые доверяют MindMate ежедневно",
+      title: "AI-Психолог в вашем кармане",
+      subtitle: "24/7 анонимный чат-коучинг за ₽399/мес. Мгновенные ответы и поддержка в любой момент.",
+      cta: "Начать 7-дневный триал",
+      disclaimer: "Бесплатно 7 дней, затем ₽399/мес. Отмена в любое время.",
+      friendMessage: "Как знающий друг, который помнит всё, хранит секреты лучше любого дневника или лучшего друга, и имеет доступ к коллективным знаниям человечества по психологии."
+    },
+    problemSolution: {
+      problemTitle: "Когда традиционная терапия неудобна",
+      problemPoints: [
+        "Дорого и сложно найти подходящего терапевта",
+        "Нет поддержки ночью и в выходные",
+        "Долгие очереди на запись и неудобные графики"
+      ],
+      solutionTitle: "Наше решение",
+      solutionPoints: [
+        "Мгновенные ответы в любое время суток",
+        "Цена в 8 раз ниже обычной терапии", 
+        "Полная анонимность и конфиденциальность"
+      ]
+    },
+    features: {
+      title: "Возможности платформы",
+      subtitle: "Всё что нужно для эмоциональной поддержки и психологического здоровья",
+      response: "Ответ < 3 с",
+      responseDesc: "Мгновенные ответы на ваши сообщения в любое время",
+      unlimited: "Неограниченный чат",
+      unlimitedDesc: "Пишите сколько угодно, без лимитов по времени",
+      memory: "Контекстная память",
+      memoryDesc: "AI помнит вашу историю и подстраивается под вас",
+      crisis: "Антикризисные флаги", 
+      crisisDesc: "Автоматическое определение кризисных состояний"
+    },
+    socialProof: {
+      title: "Отзывы пользователей"
+    },
+    pricing: {
+      title: "Простые и честные цены",
+      subtitle: "Начните бесплатно, продолжайте по подписке",
+      basic: "Базовый план",
+      basicPrice: "₽399",
+      premium: "Премиум план",
+      premiumPrice: "₽498",
+      popular: "Популярный",
+      month: "в месяц",
+      basicFeatures: [
+        "Неограниченный текстовый чат",
+        "Контекстная память",
+        "Отслеживание настроения", 
+        "Антикризисная поддержка"
+      ],
+      premiumFeatures: [
+        "Всё из базового плана",
+        "Голосовые сообщения",
+        "Приоритетная поддержка",
+        "Экспорт истории"
+      ],
+      startBasic: "7 дней бесплатно",
+      startPremium: "Начать с премиум"
+    },
+    howItWorks: {
+      title: "Как это работает",
+      step1: "Авторизуйтесь",
+      step1Desc: "Быстрая регистрация через Telegram или email за 30 секунд",
+      step2: "Начните чат",
+      step2Desc: "Опишите что вас беспокоит и получите поддержку сразу же",
+      step3: "Продолжайте расти",
+      step3Desc: "Отслеживайте прогресс и вырабатывайте лучшие привычки для психического здоровья"
+    },
+    faq: {
+      title: "Часто задаваемые вопросы"
+    },
+    footer: {
+      description: "AI-поддержка психологического здоровья доступна 24/7. Ваш надёжный спутник для душевного благополучия.",
+      contact: "Контакты",
+      legal: "Правовая информация",
+      privacy: "Политика конфиденциальности",
+      terms: "Пользовательское соглашение",
+      compliance: "Соответствие 152-ФЗ и GDPR"
+    }
+  }
+};
 
 const Landing = () => {
+  const [language, setLanguage] = useState<Language>('en');
+  const t = translations[language];
+
   return (
     <div className="min-h-screen bg-background font-inter">
       {/* Header */}
@@ -28,14 +308,29 @@ const Landing = () => {
             <span className="font-bold text-xl text-foreground">MindMate</span>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Возможности</a>
-            <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">Как это работает</a>
-            <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">Цены</a>
-            <a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">FAQ</a>
+            <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">{t.nav.features}</a>
+            <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">{t.nav.howItWorks}</a>
+            <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">{t.nav.pricing}</a>
+            <a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">{t.nav.faq}</a>
           </nav>
-          <Button variant="hero" className="text-white font-semibold">
-            Начать триал
-          </Button>
+          <div className="flex items-center space-x-4">
+            {/* Language Selector */}
+            <div className="relative">
+              <select 
+                value={language} 
+                onChange={(e) => setLanguage(e.target.value as Language)}
+                className="appearance-none bg-transparent border border-border rounded-md px-3 py-1 text-sm text-foreground cursor-pointer hover:border-primary transition-colors"
+              >
+                <option value="en">🇺🇸 EN</option>
+                <option value="pt">🇧🇷 PT</option>
+                <option value="ru">🇷🇺 RU</option>
+              </select>
+              <Globe className="absolute right-1 top-1/2 -translate-y-1/2 h-3 w-3 text-muted-foreground pointer-events-none" />
+            </div>
+            <Button variant="hero" className="text-white font-semibold">
+              {t.nav.startTrial}
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -47,24 +342,27 @@ const Landing = () => {
             <div className="space-y-8">
               <Badge variant="secondary" className="inline-flex items-center gap-2">
                 <Star className="h-4 w-4 fill-secondary text-secondary" />
-                4.8 звёзд в Telegram-боте
+                {t.hero.badge}
               </Badge>
               
               <div className="space-y-6">
                 <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-                  AI-Психолог в вашем кармане
+                  {t.hero.title}
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-lg">
-                  24/7 анонимный чат-коучинг за ₽399/мес. Мгновенные ответы и поддержка в любой момент.
+                  {t.hero.subtitle}
+                </p>
+                <p className="text-base text-muted-foreground max-w-lg italic">
+                  {t.hero.friendMessage}
                 </p>
               </div>
 
               <div className="space-y-4">
                 <Button size="lg" variant="hero" className="text-lg px-8 py-4 h-auto">
-                  Начать 7-дневный триал
+                  {t.hero.cta}
                 </Button>
                 <p className="text-sm text-muted-foreground">
-                  Бесплатно 7 дней, затем ₽399/мес. Отмена в любое время.
+                  {t.hero.disclaimer}
                 </p>
               </div>
             </div>
@@ -90,21 +388,15 @@ const Landing = () => {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-                  Почему традиционная терапия недоступна?
+                  {t.problemSolution.problemTitle}
                 </h2>
                 <div className="space-y-4 text-lg text-muted-foreground">
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-destructive rounded-full mt-3 flex-shrink-0"></div>
-                    <p>Дорого и сложно найти подходящего терапевта</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-destructive rounded-full mt-3 flex-shrink-0"></div>
-                    <p>Недоступность поддержки ночью и в выходные</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-destructive rounded-full mt-3 flex-shrink-0"></div>
-                    <p>Долгие очереди на запись и неудобные графики</p>
-                  </div>
+                  {t.problemSolution.problemPoints.map((point, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-destructive rounded-full mt-3 flex-shrink-0"></div>
+                      <p>{point}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -112,21 +404,15 @@ const Landing = () => {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-                  Наше решение
+                  {t.problemSolution.solutionTitle}
                 </h2>
                 <div className="space-y-4 text-lg text-muted-foreground">
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-secondary rounded-full mt-3 flex-shrink-0"></div>
-                    <p>Мгновенные ответы в любое время суток</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-secondary rounded-full mt-3 flex-shrink-0"></div>
-                    <p>Цена в 8 раз ниже обычной терапии</p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-secondary rounded-full mt-3 flex-shrink-0"></div>
-                    <p>Полная анонимность и конфиденциальность</p>
-                  </div>
+                  {t.problemSolution.solutionPoints.map((point, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-secondary rounded-full mt-3 flex-shrink-0"></div>
+                      <p>{point}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -139,10 +425,10 @@ const Landing = () => {
         <div className="container max-w-6xl mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-              Возможности платформы
+              {t.features.title}
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Всё что нужно для эмоциональной поддержки и психологического здоровья
+              {t.features.subtitle}
             </p>
           </div>
 
@@ -151,9 +437,9 @@ const Landing = () => {
               <div className="mx-auto w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center">
                 <Clock className="h-6 w-6 text-white" />
               </div>
-              <h3 className="font-semibold text-lg text-foreground">Ответ &lt; 3 с</h3>
+              <h3 className="font-semibold text-lg text-foreground">{t.features.response}</h3>
               <p className="text-sm text-muted-foreground">
-                Мгновенные ответы на ваши сообщения в любое время
+                {t.features.responseDesc}
               </p>
             </Card>
 
@@ -161,9 +447,9 @@ const Landing = () => {
               <div className="mx-auto w-12 h-12 bg-gradient-secondary rounded-xl flex items-center justify-center">
                 <Infinity className="h-6 w-6 text-white" />
               </div>
-              <h3 className="font-semibold text-lg text-foreground">Неограниченный чат</h3>
+              <h3 className="font-semibold text-lg text-foreground">{t.features.unlimited}</h3>
               <p className="text-sm text-muted-foreground">
-                Пишите сколько угодно, без лимитов по времени
+                {t.features.unlimitedDesc}
               </p>
             </Card>
 
@@ -171,9 +457,9 @@ const Landing = () => {
               <div className="mx-auto w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center">
                 <Brain className="h-6 w-6 text-white" />
               </div>
-              <h3 className="font-semibold text-lg text-foreground">Контекстная память</h3>
+              <h3 className="font-semibold text-lg text-foreground">{t.features.memory}</h3>
               <p className="text-sm text-muted-foreground">
-                AI помнит вашу историю и подстраивается под вас
+                {t.features.memoryDesc}
               </p>
             </Card>
 
@@ -181,9 +467,9 @@ const Landing = () => {
               <div className="mx-auto w-12 h-12 bg-gradient-secondary rounded-xl flex items-center justify-center">
                 <Shield className="h-6 w-6 text-white" />
               </div>
-              <h3 className="font-semibold text-lg text-foreground">Антикризисные флаги</h3>
+              <h3 className="font-semibold text-lg text-foreground">{t.features.crisis}</h3>
               <p className="text-sm text-muted-foreground">
-                Автоматическое определение кризисных состояний
+                {t.features.crisisDesc}
               </p>
             </Card>
           </div>
@@ -194,7 +480,7 @@ const Landing = () => {
       <section className="py-20 bg-gray-50">
         <div className="container max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-12">
-            Отзывы пользователей
+            {t.socialProof.title}
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -250,80 +536,60 @@ const Landing = () => {
       <section id="pricing" className="py-20">
         <div className="container max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Простые и честные цены
+            {t.pricing.title}
           </h2>
           <p className="text-xl text-muted-foreground mb-16">
-            Начните бесплатно, продолжайте по подписке
+            {t.pricing.subtitle}
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card className="p-8 space-y-6 border-2 border-border">
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-foreground">Базовый план</h3>
+                <h3 className="text-2xl font-bold text-foreground">{t.pricing.basic}</h3>
                 <div className="space-y-2">
-                  <div className="text-4xl font-bold text-foreground">₽399</div>
-                  <div className="text-muted-foreground">в месяц</div>
+                  <div className="text-4xl font-bold text-foreground">{t.pricing.basicPrice}</div>
+                  <div className="text-muted-foreground">{t.pricing.month}</div>
                 </div>
               </div>
               
               <div className="space-y-4 text-left">
-                <div className="flex items-center gap-3">
-                  <Check className="h-5 w-5 text-secondary" />
-                  <span className="text-foreground">Неограниченный текстовый чат</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-5 w-5 text-secondary" />
-                  <span className="text-foreground">Контекстная память</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-5 w-5 text-secondary" />
-                  <span className="text-foreground">Отслеживание настроения</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-5 w-5 text-secondary" />
-                  <span className="text-foreground">Антикризисная поддержка</span>
-                </div>
+                {t.pricing.basicFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <Check className="h-5 w-5 text-secondary" />
+                    <span className="text-foreground">{feature}</span>
+                  </div>
+                ))}
               </div>
 
               <Button className="w-full" variant="outline">
-                7 дней бесплатно
+                {t.pricing.startBasic}
               </Button>
             </Card>
 
             <Card className="p-8 space-y-6 border-2 border-primary bg-gradient-to-br from-primary/5 to-secondary/5 relative">
               <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-hero text-white">
-                Популярный
+                {t.pricing.popular}
               </Badge>
               
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-foreground">Премиум план</h3>
+                <h3 className="text-2xl font-bold text-foreground">{t.pricing.premium}</h3>
                 <div className="space-y-2">
-                  <div className="text-4xl font-bold text-foreground">₽498</div>
-                  <div className="text-muted-foreground">в месяц</div>
+                  <div className="text-4xl font-bold text-foreground">{t.pricing.premiumPrice}</div>
+                  <div className="text-muted-foreground">{t.pricing.month}</div>
                 </div>
               </div>
               
               <div className="space-y-4 text-left">
-                <div className="flex items-center gap-3">
-                  <Check className="h-5 w-5 text-secondary" />
-                  <span className="text-foreground">Всё из базового плана</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-5 w-5 text-secondary" />
-                  <span className="text-foreground">Голосовые сообщения</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-5 w-5 text-secondary" />
-                  <span className="text-foreground">Приоритетная поддержка</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-5 w-5 text-secondary" />
-                  <span className="text-foreground">Экспорт истории</span>
-                </div>
+                {t.pricing.premiumFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <Check className="h-5 w-5 text-secondary" />
+                    <span className="text-foreground">{feature}</span>
+                  </div>
+                ))}
               </div>
 
               <Button className="w-full" variant="hero">
-                Начать с премиум
+                {t.pricing.startPremium}
               </Button>
             </Card>
           </div>
@@ -334,7 +600,7 @@ const Landing = () => {
       <section id="how-it-works" className="py-20 bg-gray-50">
         <div className="container max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-16">
-            Как это работает
+            {t.howItWorks.title}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -342,9 +608,9 @@ const Landing = () => {
               <div className="mx-auto w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center text-white text-2xl font-bold">
                 1
               </div>
-              <h3 className="text-xl font-semibold text-foreground">Авторизуйтесь</h3>
+              <h3 className="text-xl font-semibold text-foreground">{t.howItWorks.step1}</h3>
               <p className="text-muted-foreground">
-                Быстрая регистрация через Telegram или email за 30 секунд
+                {t.howItWorks.step1Desc}
               </p>
             </div>
 
@@ -352,9 +618,9 @@ const Landing = () => {
               <div className="mx-auto w-16 h-16 bg-gradient-secondary rounded-full flex items-center justify-center text-white text-2xl font-bold">
                 2
               </div>
-              <h3 className="text-xl font-semibold text-foreground">Начните чат</h3>
+              <h3 className="text-xl font-semibold text-foreground">{t.howItWorks.step2}</h3>
               <p className="text-muted-foreground">
-                Опишите что вас беспокоит и получите поддержку сразу же
+                {t.howItWorks.step2Desc}
               </p>
             </div>
 
@@ -362,9 +628,9 @@ const Landing = () => {
               <div className="mx-auto w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center text-white text-2xl font-bold">
                 3
               </div>
-              <h3 className="text-xl font-semibold text-foreground">Платите по окончании теста</h3>
+              <h3 className="text-xl font-semibold text-foreground">{t.howItWorks.step3}</h3>
               <p className="text-muted-foreground">
-                7 дней полностью бесплатно, затем ₽399/мес по желанию
+                {t.howItWorks.step3Desc}
               </p>
             </div>
           </div>
@@ -375,7 +641,7 @@ const Landing = () => {
       <section id="faq" className="py-20">
         <div className="container max-w-4xl mx-auto px-4">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground text-center mb-16">
-            Часто задаваемые вопросы
+            {t.faq.title}
           </h2>
 
           <div className="space-y-6">
@@ -443,7 +709,7 @@ const Landing = () => {
                 <span className="font-bold text-xl">MindMate</span>
               </div>
               <p className="text-gray-400">
-                AI-Психолог в вашем кармане. 24/7 поддержка для вашего эмоционального здоровья.
+                {t.footer.description}
               </p>
               <div className="flex space-x-4">
                 <Instagram className="h-6 w-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
@@ -461,17 +727,19 @@ const Landing = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Поддержка</h4>
+              <h4 className="font-semibold mb-4">{t.footer.legal}</h4>
               <div className="space-y-2 text-gray-400">
                 <a href="#faq" className="block hover:text-white transition-colors">FAQ</a>
-                <a href="#" className="block hover:text-white transition-colors">Политика конфиденциальности</a>
-                <a href="#" className="block hover:text-white transition-colors">Соответствие 152-ФЗ</a>
-                <a href="#" className="block hover:text-white transition-colors">GDPR</a>
+                <a href="#" className="block hover:text-white transition-colors">{t.footer.privacy}</a>
+                <a href="#" className="block hover:text-white transition-colors">{t.footer.terms}</a>
+                {language === 'ru' && (
+                  <a href="#" className="block hover:text-white transition-colors">{t.footer.compliance}</a>
+                )}
               </div>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Контакты</h4>
+              <h4 className="font-semibold mb-4">{t.footer.contact}</h4>
               <div className="space-y-2 text-gray-400">
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4" />
