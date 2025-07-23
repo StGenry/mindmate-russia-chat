@@ -32,7 +32,7 @@ const translations = {
     },
     hero: {
       badge: "Join over 5,000 users who trust MindMate daily",
-      title: "Your Personal Pocket Mental Coach",
+      title: "Mental Wellness in Your Pocket",
       subtitle: "24/7 anonymous chat coaching for €4.99/month. Instant responses and support anytime.",
       cta: "Start 7-day free trial",
       disclaimer: "Free for 7 days, then €4.99/month. Cancel anytime.",
@@ -130,7 +130,7 @@ const translations = {
     },
     hero: {
       badge: "Junte-se a mais de 5.000 usuários que confiam no MindMate diariamente",
-      title: "O Seu Treinador Mental de Bolso Pessoal",
+      title: "Bem-estar Mental no Seu Bolso",
       subtitle: "Coaching de chat anônimo 24/7 por €4,99/mês. Respostas instantâneas e suporte a qualquer momento.",
       cta: "Iniciar teste gratuito de 7 dias",
       disclaimer: "Grátis por 7 dias, depois €4,99/mês. Cancele a qualquer momento.",
@@ -228,7 +228,7 @@ const translations = {
     },
     hero: {
       badge: "Присоединяйтесь к более чем 5 000 пользователей, которые доверяют MindMate ежедневно",
-      title: "Ваш персональный карманный ментальный коуч",
+      title: "Психологическое благополучие в вашем кармане",
       subtitle: "24/7 анонимный чат-коучинг за ₽399/мес. Мгновенные ответы и поддержка в любой момент.",
       cta: "Начать 7-дневный триал",
       disclaimer: "Бесплатно 7 дней, затем ₽399/мес. Отмена в любое время.",
