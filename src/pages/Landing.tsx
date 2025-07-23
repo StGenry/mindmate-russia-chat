@@ -32,7 +32,7 @@ const translations = {
     },
     hero: {
       badge: "Join over 5,000 users who trust MindMate daily",
-      title: "Your AI Psychology Coach",
+      title: "Your Personal Pocket Mental Coach",
       subtitle: "24/7 anonymous chat coaching for €4.99/month. Instant responses and support anytime.",
       cta: "Start 7-day free trial",
       disclaimer: "Free for 7 days, then €4.99/month. Cancel anytime.",
@@ -45,7 +45,7 @@ const translations = {
         "No support at night or on weekends", 
         "Long waiting lists & inflexible schedules"
       ],
-      solutionTitle: "Our Solution",
+      solutionTitle: "Important benefits of our approach",
       solutionPoints: [
         "Instant responses anytime, day or night",
         "8x cheaper than traditional therapy",
@@ -101,7 +101,15 @@ const translations = {
       step3Desc: "Track your progress and build better mental health habits"
     },
     faq: {
-      title: "Frequently Asked Questions"
+      title: "Frequently Asked Questions",
+      q1: "Is this therapy? Can you make a diagnosis?",
+      a1: "No, we provide wellness support and coaching, but are not a replacement for professional therapy. We do not make diagnoses or prescribe treatment.",
+      q2: "How is my data protected?",
+      a2: "We use data encryption and comply with GDPR requirements. Your messages are pseudonymized and protected.",
+      q3: "What if I'm in crisis?",
+      a3: "Our system automatically detects crisis messages and provides hotline contacts for immediate professional help.",
+      q4: "Can I cancel my subscription?",
+      a4: "Yes, you can cancel your subscription at any time without penalties or hidden fees."
     },
     footer: {
       description: "AI-powered psychological support available 24/7. Your trusted companion for mental wellness.",
@@ -122,7 +130,7 @@ const translations = {
     },
     hero: {
       badge: "Junte-se a mais de 5.000 usuários que confiam no MindMate diariamente",
-      title: "Seu Coach de Psicologia AI",
+      title: "O Seu Treinador Mental de Bolso Pessoal",
       subtitle: "Coaching de chat anônimo 24/7 por €4,99/mês. Respostas instantâneas e suporte a qualquer momento.",
       cta: "Iniciar teste gratuito de 7 dias",
       disclaimer: "Grátis por 7 dias, depois €4,99/mês. Cancele a qualquer momento.",
@@ -135,7 +143,7 @@ const translations = {
         "Sem apoio à noite ou nos fins de semana",
         "Longas listas de espera e horários inflexíveis"
       ],
-      solutionTitle: "Nossa Solução", 
+      solutionTitle: "Benefícios importantes da nossa abordagem", 
       solutionPoints: [
         "Respostas instantâneas a qualquer hora",
         "8x mais barato que terapia tradicional",
@@ -191,7 +199,15 @@ const translations = {
       step3Desc: "Acompanhe seu progresso e construa melhores hábitos de saúde mental"
     },
     faq: {
-      title: "Perguntas Frequentes"
+      title: "Perguntas Frequentes",
+      q1: "É terapia? Podem fazer um diagnóstico?",
+      a1: "Não, fornecemos apoio de bem-estar e coaching, mas não somos um substituto da terapia profissional. Não fazemos diagnósticos nem prescrevemos tratamento.",
+      q2: "Como são protegidos os meus dados?",
+      a2: "Utilizamos encriptação de dados e cumprimos os requisitos do RGPD. As suas mensagens são pseudonimizadas e protegidas.",
+      q3: "E se estiver em crise?",
+      a3: "O nosso sistema detecta automaticamente mensagens de crise e fornece contactos de linhas de apoio para ajuda profissional imediata.",
+      q4: "Posso cancelar a minha subscrição?",
+      a4: "Sim, pode cancelar a sua subscrição a qualquer momento sem penalizações ou taxas ocultas."
     },
     footer: {
       description: "Suporte psicológico alimentado por IA disponível 24/7. Seu companheiro confiável para bem-estar mental.",
@@ -212,7 +228,7 @@ const translations = {
     },
     hero: {
       badge: "Присоединяйтесь к более чем 5 000 пользователей, которые доверяют MindMate ежедневно",
-      title: "AI-Психолог в вашем кармане",
+      title: "Ваш персональный карманный ментальный коуч",
       subtitle: "24/7 анонимный чат-коучинг за ₽399/мес. Мгновенные ответы и поддержка в любой момент.",
       cta: "Начать 7-дневный триал",
       disclaimer: "Бесплатно 7 дней, затем ₽399/мес. Отмена в любое время.",
@@ -225,7 +241,7 @@ const translations = {
         "Нет поддержки ночью и в выходные",
         "Долгие очереди на запись и неудобные графики"
       ],
-      solutionTitle: "Наше решение",
+      solutionTitle: "Важные преимущества нашего подхода",
       solutionPoints: [
         "Мгновенные ответы в любое время суток",
         "Цена в 8 раз ниже обычной терапии", 
@@ -281,7 +297,15 @@ const translations = {
       step3Desc: "Отслеживайте прогресс и вырабатывайте лучшие привычки для психического здоровья"
     },
     faq: {
-      title: "Часто задаваемые вопросы"
+      title: "Часто задаваемые вопросы",
+      q1: "Это терапия? Можете ли вы поставить диагноз?",
+      a1: "Нет, мы предоставляем wellness-поддержку и коучинг, но не являемся заменой профессиональной терапии. Мы не ставим диагнозы и не назначаем лечение.",
+      q2: "Как защищены мои данные?",
+      a2: "Мы используем шифрование данных, соблюдаем требования 152-ФЗ и GDPR. Ваши сообщения псевдонимизированы и защищены.",
+      q3: "Что если я в кризисе?",
+      a3: "Наша система автоматически определяет кризисные сообщения и предоставляет контакты горячих линий для немедленной профессиональной помощи.",
+      q4: "Можно ли отменить подписку?",
+      a4: "Да, вы можете отменить подписку в любое время без штрафов и скрытых платежей."
     },
     footer: {
       description: "AI-поддержка психологического здоровья доступна 24/7. Ваш надёжный спутник для душевного благополучия.",
@@ -322,7 +346,7 @@ const Landing = () => {
                 className="appearance-none bg-transparent border border-border rounded-md px-3 py-1 text-sm text-foreground cursor-pointer hover:border-primary transition-colors"
               >
                 <option value="en">🇺🇸 EN</option>
-                <option value="pt">🇧🇷 PT</option>
+                <option value="pt">🇵🇹 PT</option>
                 <option value="ru">🇷🇺 RU</option>
               </select>
               <Globe className="absolute right-1 top-1/2 -translate-y-1/2 h-3 w-3 text-muted-foreground pointer-events-none" />
@@ -648,51 +672,48 @@ const Landing = () => {
             <Card className="p-6 border-0 shadow-md">
               <div className="flex items-center justify-between cursor-pointer">
                 <h3 className="text-lg font-semibold text-foreground">
-                  Это терапия? Можете ли вы поставить диагноз?
+                  {t.faq.q1}
                 </h3>
                 <ChevronDown className="h-5 w-5 text-muted-foreground" />
               </div>
               <p className="text-muted-foreground mt-4">
-                Нет, мы предоставляем wellness-поддержку и коучинг, но не являемся заменой профессиональной терапии. 
-                Мы не ставим диагнозы и не назначаем лечение.
+                {t.faq.a1}
               </p>
             </Card>
 
             <Card className="p-6 border-0 shadow-md">
               <div className="flex items-center justify-between cursor-pointer">
                 <h3 className="text-lg font-semibold text-foreground">
-                  Как защищены мои данные?
+                  {t.faq.q2}
                 </h3>
                 <ChevronDown className="h-5 w-5 text-muted-foreground" />
               </div>
               <p className="text-muted-foreground mt-4">
-                Мы используем шифрование данных, соблюдаем требования 152-ФЗ и GDPR. 
-                Ваши сообщения псевдонимизированы и защищены.
+                {t.faq.a2}
               </p>
             </Card>
 
             <Card className="p-6 border-0 shadow-md">
               <div className="flex items-center justify-between cursor-pointer">
                 <h3 className="text-lg font-semibold text-foreground">
-                  Что если я в кризисе?
+                  {t.faq.q3}
                 </h3>
                 <ChevronDown className="h-5 w-5 text-muted-foreground" />
               </div>
               <p className="text-muted-foreground mt-4">
-                Наша система автоматически определяет кризисные сообщения и предоставляет контакты 
-                горячих линий для немедленной профессиональной помощи.
+                {t.faq.a3}
               </p>
             </Card>
 
             <Card className="p-6 border-0 shadow-md">
               <div className="flex items-center justify-between cursor-pointer">
                 <h3 className="text-lg font-semibold text-foreground">
-                  Можно ли отменить подписку?
+                  {t.faq.q4}
                 </h3>
                 <ChevronDown className="h-5 w-5 text-muted-foreground" />
               </div>
               <p className="text-muted-foreground mt-4">
-                Да, вы можете отменить подписку в любое время без штрафов и скрытых платежей.
+                {t.faq.a4}
               </p>
             </Card>
           </div>
