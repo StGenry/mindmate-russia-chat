@@ -117,7 +117,11 @@ const translations = {
       legal: "Legal",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
-      compliance: "Compliance"
+      compliance: "Compliance",
+      product: "Product",
+      features: "Features",
+      pricing: "Pricing",
+      howItWorks: "How it Works"
     }
   },
   pt: {
@@ -215,7 +219,11 @@ const translations = {
       legal: "Legal", 
       privacy: "Política de Privacidade",
       terms: "Termos de Serviço",
-      compliance: "Conformidade"
+      compliance: "Conformidade",
+      product: "Produto",
+      features: "Recursos",
+      pricing: "Preços",
+      howItWorks: "Como Funciona"
     }
   },
   ru: {
@@ -232,7 +240,7 @@ const translations = {
       subtitle: "24/7 анонимный чат-коучинг за ₽399/мес. Мгновенные ответы и поддержка в любой момент.",
       cta: "Начать 7-дневный триал",
       disclaimer: "Бесплатно 7 дней, затем ₽399/мес. Отмена в любое время.",
-      friendMessage: "Как добрый, внимательный друг, в голове которого — вся библиотека психологических знаний всего человечества. Вы можете обсуждать стратегии разговоров, анализировать ситуации и лучше понимать себя и других. Помнит каждую деталь, так что вы всегда можете продолжить с того места, где остановились — и хранит секреты лучше любого дневника или лучшего друга."
+      friendMessage: "Как добрый и внимательный друг, в голове которого — вся библиотека психологических знаний человечества. \n\nС ним вы сможете обсудить разобрать ситуацию,  стратегию общения, глубже понять себя и других. Он запомнит каждую деталь, поэтому вы всегда сможете вернуться к разговору с того места, где остановились. И сохранит секреты надёжнее любого дневника или самого близкого друга."
     },
     problemSolution: {
       problemTitle: "Когда традиционная терапия неудобна",
@@ -313,7 +321,11 @@ const translations = {
       legal: "Правовая информация",
       privacy: "Политика конфиденциальности",
       terms: "Пользовательское соглашение",
-      compliance: "Соответствие 152-ФЗ и GDPR"
+      compliance: "Соответствие 152-ФЗ и GDPR",
+      product: "Продукт",
+      features: "Возможности",
+      pricing: "Цены",
+      howItWorks: "Как работает"
     }
   }
 };
@@ -515,11 +527,20 @@ const Landing = () => {
                 ))}
               </div>
               <p className="text-muted-foreground italic">
-                "Наконец-то могу поговорить с кем-то в 2 ночи, когда не спится из-за тревоги"
+                {language === 'en' 
+                  ? '"Finally, I can reach out to someone at 2 AM when anxiety keeps me awake."'
+                  : language === 'pt'
+                  ? '"Finalmente posso falar com alguém às 2 da manhã, quando a ansiedade me impede de dormir."'
+                  : '"Наконец-то могу поговорить с кем-то в 2 ночи, когда не спится из-за тревоги"'
+                }
               </p>
               <div className="pt-4 border-t">
-                <p className="font-semibold text-foreground">Анна, 28</p>
-                <p className="text-sm text-muted-foreground">Менеджер проектов</p>
+                <p className="font-semibold text-foreground">
+                  {language === 'en' ? 'Anna, 28' : language === 'pt' ? 'Ana, 28' : 'Анна, 28'}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {language === 'en' ? 'Project Manager' : language === 'pt' ? 'Gestora de Projetos' : 'Менеджер проектов'}
+                </p>
               </div>
             </Card>
 
@@ -530,11 +551,20 @@ const Landing = () => {
                 ))}
               </div>
               <p className="text-muted-foreground italic">
-                "Цена в разы ниже психотерапевта, а помощь получаю круглосуточно"
+                {language === 'en' 
+                  ? '"MindMate is there for me 24/7: it costs a fraction of my therapist, yet provides instant support."'
+                  : language === 'pt'
+                  ? '"O MindMate está disponível 24/7: custa uma fracção do meu terapeuta e oferece apoio imediato."'
+                  : '"Под рукой 24/7 на посоветоваться, стоит в разы меньше чем мой терапевт"'
+                }
               </p>
               <div className="pt-4 border-t">
-                <p className="font-semibold text-foreground">Дмитрий, 35</p>
-                <p className="text-sm text-muted-foreground">IT-специалист</p>
+                <p className="font-semibold text-foreground">
+                  {language === 'en' ? 'Jeff, 35' : language === 'pt' ? 'Jeff, 35' : 'Джеф, 35'}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {language === 'en' ? 'IT Specialist' : language === 'pt' ? 'Especialista em TI' : 'IT-специалист'}
+                </p>
               </div>
             </Card>
 
@@ -545,11 +575,20 @@ const Landing = () => {
                 ))}
               </div>
               <p className="text-muted-foreground italic">
-                "Помог справиться с послеродовой депрессией, когда не к кому было обратиться"
+                {language === 'en' 
+                  ? '"It helped me overcome postpartum depression when I had nowhere else to turn."'
+                  : language === 'pt'
+                  ? '"Ajudou-me a ultrapassar a depressão pós-parto quando não tinha ninguém a quem recorrer."'
+                  : '"Помог справиться с послеродовой депрессией, когда не к кому было обратиться"'
+                }
               </p>
               <div className="pt-4 border-t">
-                <p className="font-semibold text-foreground">Мария, 26</p>
-                <p className="text-sm text-muted-foreground">Молодая мама</p>
+                <p className="font-semibold text-foreground">
+                  {language === 'en' ? 'Maria, 26' : language === 'pt' ? 'Maria, 26' : 'Мария, 26'}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {language === 'en' ? 'New Mom' : language === 'pt' ? 'Nova Mãe' : 'Молодая мама'}
+                </p>
               </div>
             </Card>
           </div>
@@ -739,11 +778,19 @@ const Landing = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Продукт</h4>
+              <h4 className="font-semibold mb-4">
+                {language === 'en' ? t.footer.product : language === 'pt' ? t.footer.product : 'Продукт'}
+              </h4>
               <div className="space-y-2 text-gray-400">
-                <a href="#features" className="block hover:text-white transition-colors">Возможности</a>
-                <a href="#pricing" className="block hover:text-white transition-colors">Цены</a>
-                <a href="#how-it-works" className="block hover:text-white transition-colors">Как работает</a>
+                <a href="#features" className="block hover:text-white transition-colors">
+                  {language === 'en' ? t.footer.features : language === 'pt' ? t.footer.features : 'Возможности'}
+                </a>
+                <a href="#pricing" className="block hover:text-white transition-colors">
+                  {language === 'en' ? t.footer.pricing : language === 'pt' ? t.footer.pricing : 'Цены'}
+                </a>
+                <a href="#how-it-works" className="block hover:text-white transition-colors">
+                  {language === 'en' ? t.footer.howItWorks : language === 'pt' ? t.footer.howItWorks : 'Как работает'}
+                </a>
               </div>
             </div>
 
