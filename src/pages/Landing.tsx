@@ -111,6 +111,10 @@ const translations = {
       q4: "Can I cancel my subscription?",
       a4: "Yes, you can cancel your subscription at any time without penalties or hidden fees."
     },
+    startTrial: {
+      title: "Start Trial",
+      subtitle: "Scan the QR code to open the MindMate Telegram bot and start your 7-day free trial."
+    },
     footer: {
       description: "AI-powered psychological support available 24/7. Your trusted companion for mental wellness.",
       contact: "Contact",
@@ -212,6 +216,10 @@ const translations = {
       a3: "O nosso sistema detecta automaticamente mensagens de crise e fornece contactos de linhas de apoio para ajuda profissional imediata.",
       q4: "Posso cancelar a minha subscrição?",
       a4: "Sim, pode cancelar a sua subscrição a qualquer momento sem penalizações ou taxas ocultas."
+    },
+    startTrial: {
+      title: "Iniciar Teste Gratuito",
+      subtitle: "Digitalize o código QR para abrir o bot MindMate do Telegram e começar seu teste gratuito de 7 dias."
     },
     footer: {
       description: "Suporte psicológico alimentado por IA disponível 24/7. Seu companheiro confiável para bem-estar mental.",
@@ -315,6 +323,10 @@ const translations = {
       q4: "Можно ли отменить подписку?",
       a4: "Да, вы можете отменить подписку в любое время без штрафов и скрытых платежей."
     },
+    startTrial: {
+      title: "Начать пробный период",
+      subtitle: "Отсканируйте QR-код, чтобы открыть Telegram-бот MindMate и начать 7-дневный бесплатный пробный период."
+    },
     footer: {
       description: "AI-поддержка психологического здоровья доступна 24/7. Ваш надёжный спутник для душевного благополучия.",
       contact: "Контакты",
@@ -363,8 +375,10 @@ const Landing = () => {
               </select>
               <Globe className="absolute right-1 top-1/2 -translate-y-1/2 h-3 w-3 text-muted-foreground pointer-events-none" />
             </div>
-            <Button variant="hero" className="text-white font-semibold">
-              {t.nav.startTrial}
+            <Button variant="hero" className="text-white font-semibold" asChild>
+              <a href="https://t.me/MindMateTherapy_bot" target="_blank" rel="noopener noreferrer">
+                {t.nav.startTrial}
+              </a>
             </Button>
           </div>
         </div>
@@ -394,8 +408,10 @@ const Landing = () => {
               </div>
 
               <div className="space-y-4">
-                <Button size="lg" variant="hero" className="text-lg px-8 py-4 h-auto">
-                  {t.hero.cta}
+                <Button size="lg" variant="hero" className="text-lg px-8 py-4 h-auto" asChild>
+                  <a href="https://t.me/MindMateTherapy_bot" target="_blank" rel="noopener noreferrer">
+                    {t.hero.cta}
+                  </a>
                 </Button>
                 <p className="text-sm text-muted-foreground">
                   {t.hero.disclaimer}
@@ -624,8 +640,10 @@ const Landing = () => {
                 ))}
               </div>
 
-              <Button className="w-full" variant="outline">
-                {t.pricing.startBasic}
+              <Button className="w-full" variant="outline" asChild>
+                <a href="https://t.me/MindMateTherapy_bot" target="_blank" rel="noopener noreferrer">
+                  {t.pricing.startBasic}
+                </a>
               </Button>
             </Card>
 
@@ -651,8 +669,10 @@ const Landing = () => {
                 ))}
               </div>
 
-              <Button className="w-full" variant="hero">
-                {t.pricing.startPremium}
+              <Button className="w-full" variant="hero" asChild>
+                <a href="https://t.me/MindMateTherapy_bot" target="_blank" rel="noopener noreferrer">
+                  {t.pricing.startPremium}
+                </a>
               </Button>
             </Card>
           </div>
@@ -755,6 +775,43 @@ const Landing = () => {
                 {t.faq.a4}
               </p>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Start Trial Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container max-w-4xl mx-auto px-4 text-center">
+          <div className="space-y-8">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
+              {t.startTrial.title}
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              {t.startTrial.subtitle}
+            </p>
+            
+            <div className="flex justify-center">
+              <a 
+                href="https://t.me/MindMateTherapy_bot" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block hover:scale-105 transition-transform duration-200"
+              >
+                <img 
+                  src="/lovable-uploads/bb0f8ea2-b981-487a-8231-6144946401e8.png"
+                  alt="QR Code - MindMate Telegram Bot"
+                  className="w-64 h-64 mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-200"
+                />
+              </a>
+            </div>
+            
+            <div className="text-center">
+              <Button size="lg" variant="hero" className="text-lg px-8 py-4 h-auto" asChild>
+                <a href="https://t.me/MindMateTherapy_bot" target="_blank" rel="noopener noreferrer">
+                  {t.hero.cta}
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
